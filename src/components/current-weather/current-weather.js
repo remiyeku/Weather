@@ -1,36 +1,42 @@
 import "./currentweather.css";
 
-function CurrentWeather() {
+function CurrentWeather({ data }) {
   return (
     <div className="weather">
       <div className="top">
         <div>
-          <p className="city">London</p>
-          <p className="weatherdescr">Cloudy</p>
+          <p className="city">{data.city}</p>
+          <p className="weatherdescr">{data.weather[0].description}</p>
         </div>
-        <img alt="weather" className="weather-icon" src="icons/04d.png"></img>
+        <img
+          alt="weather"
+          className="weather-icon"
+          src={`icons/${data.weather[0].icon}.png`}
+        ></img>
       </div>
       <div className="bottom">
-        <p className="temperature">18°C </p>
+        <p className="temperature">{Math.round(data.main.temp)}°C</p>
         <div className="details">
           <div className="parameter-row">
             <span className="parameter-label">Details</span>
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Feels Like:</span>
-            <span className="parameter-value">22°C</span>
+            <span className="parameter-value">
+              {Math.round(data.main.feels_like)}°C
+            </span>
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Wind</span>
-            <span className="parameter-value">3mph</span>
+            <span className="parameter-value">{data.wind.speed}mph</span>
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Humidity</span>
-            <span className="parameter-value">10%</span>
+            <span className="parameter-value">{data.main.humidity}%</span>
           </div>
           <div className="parameter-row">
             <span className="parameter-label">Air Pressure</span>
-            <span className="parameter-value"> hPa</span>
+            <span className="parameter-value"> {data.main.pressure} hPa</span>
           </div>
         </div>
       </div>
