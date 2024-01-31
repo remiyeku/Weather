@@ -25,7 +25,7 @@ function Forecast({ data }) {
 
   return (
     <>
-      <label className="title">Daily</label>
+      <label className="title">Daily Forecast</label>
       <Accordion allowZeroExpanded>
         {data.list.splice(0, 7).map((item, index) => (
           <AccordionItem key={index}>
@@ -37,7 +37,7 @@ function Forecast({ data }) {
                     className="icon-small"
                     src={`icons/${item.weather[0].icon}.png`}
                   />
-                  <label className="days">{weekDays[index]}</label>
+                  <label className="days">{nextDays[index]}</label>
                   <label className="description">
                     {item.weather[0].description}
                   </label>
@@ -49,26 +49,28 @@ function Forecast({ data }) {
               </AccordionItemButton>
             </AccordionItemHeading>
             <AccordionItemPanel>
-              <div className="daily-details-grid">
-                <div className="daily-details-grid-item">
-                  <label>Pressure: </label>
-                  <label>{item.main.pressure} hPa</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Humidity: </label>
-                  <label>{item.main.humidity}%</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Cloud Cover: </label>
-                  <label>{item.clouds.all}%</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Wind Speed: </label>
-                  <label>{item.wind.speed} m.s</label>
-                </div>
-                <div className="daily-details-grid-item">
-                  <label>Feels Like: </label>
-                  <label>{Math.round(item.main.feels_like)}°C</label>
+              <div className="daily-details-container">
+                <div className="daily-details-grid">
+                  <div className="daily-details-grid-item">
+                    <label>Pressure: </label>
+                    <label>{item.main.pressure} hPa</label>
+                  </div>
+                  <div className="daily-details-grid-item">
+                    <label>Humidity: </label>
+                    <label>{item.main.humidity}%</label>
+                  </div>
+                  <div className="daily-details-grid-item">
+                    <label>Cloud Cover: </label>
+                    <label>{item.clouds.all}%</label>
+                  </div>
+                  <div className="daily-details-grid-item">
+                    <label>Wind Speed: </label>
+                    <label>{item.wind.speed} m.s</label>
+                  </div>
+                  <div className="daily-details-grid-item">
+                    <label>Feels Like: </label>
+                    <label>{Math.round(item.main.feels_like)}°C</label>
+                  </div>
                 </div>
               </div>
             </AccordionItemPanel>

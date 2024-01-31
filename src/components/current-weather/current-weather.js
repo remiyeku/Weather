@@ -1,8 +1,23 @@
 import "./currentweather.css";
 
 function CurrentWeather({ data }) {
+  const days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  const currentDate = new Date();
+  const currentDay = days[currentDate.getDay()];
+
   return (
     <div className="weather">
+      <div className="current-day">
+        <p>{currentDay}</p>
+      </div>
       <div className="top">
         <div>
           <p className="city">{data.city}</p>

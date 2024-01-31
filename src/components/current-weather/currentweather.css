@@ -1,37 +1,45 @@
 .weather {
     width: 300px;
     border-radius: 6px;
-    box-shadow: 10px, -2px, 20px, 2px, #000;
-    color: rgb(9, 4, 68);
-    background-color: #eee;
-    margin: 20px, auto, 0, auto;
-    padding: 0, 20px, 20px, 20px;
+    box-shadow: 0 0 20px rgba(1, 0, 68, 0.281);
+    color: #152685; 
+    background-color: #e9e8f5;
+    margin: 10px auto; /* Adjusted margin to center the component */
+    padding: 15px 20px; /* Reduced top and bottom padding */
 }
 
 .top,
 .bottom {
-    padding-left: 10px;
+    padding-left: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
+.current-day {
+    color: #152685;
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0; /* Ensure tight vertical alignment */
+}
 .city {
     font-weight: 600;
-    color: #000;
-    font-size: 20px;
+    color: #152685;
+    font-size: 25px;
     line-height: 1;
-    margin: 0;
 }
 
-.weatherdescr{
+.weatherdescr {
     font-weight: 400;
     font-size: 14px;
-    margin: 0;
-    color: #000;
+    margin: 1;
+    color: #3447b1;
 }
 
-.temperature{
+.temperature {
     font-weight: 600;
     font-size: 60px;
     width: auto;
@@ -39,25 +47,27 @@
     margin: 10px 0;
 }
 
-.details{
-    width:100%;
+.details {
+    width: 100%;
     padding-left: 20px;
 }
 
-.parameter-row{
+.parameter-row {
     display: flex;
     justify-content: space-between;
     padding-right: 10px;
 }
 
-.parameter-label{
+.parameter-label {
     text-align: left;
     font-weight: 400;
     font-size: 12px;
+    color: #3447b1;
 }
 
-.parameter-value{
+.parameter-value {
     text-align: right;
     font-weight: 600;
     font-size: 12px;
+    color: #152685;
 }
