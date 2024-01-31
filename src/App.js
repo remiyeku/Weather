@@ -32,9 +32,6 @@ function App() {
       .catch((err) => console.error("Error fetching weather data:", err));
   };
 
-  console.log("current weather", currentWeather);
-  console.log("forecast", forecast);
-
   return (
     <div className="container">
       <Search onSearchChange={handleOnSearchChange} />
