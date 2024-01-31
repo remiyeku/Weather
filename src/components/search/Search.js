@@ -11,18 +11,24 @@ function Search({ onSearchChange }) {
       `${GEO_API_URL}/cities?minPopulation=100000&namePrefix=${inputValue}`,
       geoApiOptions
     )
-      .then((response) => response.json())
       .then((response) => {
+        if (!response.ok) {
+          throw new Error("Failed to fetch data");
+        }
+        return response.json();
+      })
+      .then((data) => {
         return {
-          options: response.data.map((city) => {
-            return {
-              value: `${city.latitude} ${city.longitude}`,
-              label: `${city.name}, ${city.countryCode}`,
-            };
-          }),
+          options: data.map((city) => ({
+            value: `${city.latitude} ${city.longitude}`,
+            label: `${city.name}, ${city.countryCode}`,
+          })),
         };
       })
-      .catch((err) => console.log(err));
+      .catch((error) => {
+        console.error("Error fetching options:", error);
+        return { options: [] }; // Return empty options array in case of error
+      });
   };
 
   const handleOnChange = (searchData) => {
