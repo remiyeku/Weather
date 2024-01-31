@@ -6,7 +6,7 @@ import { WEATHER_API_URL, WEATHER_API_KEY } from "./api.js";
 import { useState } from "react";
 
 function App() {
-  const [currentWeather, setCurrentWWeather] = useState(null);
+  const [currentWeather, setCurrentWeather] = useState(null);
   const [forecast, setForecast] = useState(null);
 
   const handleOnSearchChange = (searchData) => {
@@ -21,14 +21,15 @@ function App() {
     );
 
     Promise.all([currentWeatherFetch, forecastWeatherFetch])
-      .then(async (response) => {
-        const weatherResponse = await response[0].json();
-        const forecastResponse = await response[1].json();
+      .then(async (responses) => {
+        const [weatherResponse, forecastResponse] = await Promise.all(
+          responses.map((response) => response.json())
+        );
 
-        setCurrentWWeather({ city: searchData.label, ...weatherResponse });
+        setCurrentWeather({ city: searchData.label, ...weatherResponse });
         setForecast({ city: searchData.label, ...forecastResponse });
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.error("Error fetching weather data:", err));
   };
 
   console.log("current weather", currentWeather);
