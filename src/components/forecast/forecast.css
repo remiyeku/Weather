@@ -16,17 +16,49 @@
 
 .icon-small{
     width: 50px;
+    padding-right: 20px;
+    padding-left: 5px;
 }
 
 .day{
     color: #000;
     flex: 1 1;
     font-weight: 600;
-    margin-left: 15px;
+    margin-left: 20px;
 }
 
 .description{
     flex: 1 1;
     margin-right: 15px;
     text-align: right;
+    padding-left: 15px;
+}
+
+.min-max{
+    color: #757575;
+    padding-right: 8px;
+}
+
+.daily-details-grid{
+    row-gap:0;
+    column-gap: 15px;
+    display: grid;
+    flex: 1 1;
+    grid-template-columns: auto auto;
+    padding: 5px, 15px;
+
+}
+
+.daily-details-grid-item{
+    align-items: center;
+    display: flex;
+    height: 30px;
+    justify-content: space-between;
+}
+
+.daily-details-grid-item:first-child{
+    color: #757575
+}
+.daily-details-grid-item:last-child{
+    color: #212121
 }
